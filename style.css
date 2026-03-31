@@ -1,0 +1,40 @@
+
+* {
+    box-sizing: border-box;
+}
+
+header {
+    justify-self: center;
+    text-align: center;
+}
+nav ul {
+    display: flex;
+    gap: 130px;
+    list-style: none;
+    background-color: lemonchiffon;
+}
+
+.login-box {
+    justify-self: right;
+    padding: 10px;
+    border: 2px;
+    border-color: antiquewhite;
+    border-style:solid;
+    width: 250px;
+    height: 90px;
+}
+.row {
+    display: flex;
+}
+.row button {
+    padding: 10px 15px;
+}
+
+
+main {
+    align-items:first baseline;
+
+
+}
+
+
