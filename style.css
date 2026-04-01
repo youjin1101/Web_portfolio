@@ -2,14 +2,26 @@
 * {
     box-sizing: border-box;
 }
-
+a {
+    color: black;           /* all a tag underbar delete */
+    text-decoration: inherit;   /* follow orignal deco */
+}
 header {
     justify-self: center;
     text-align: center;
 }
+header a{
+    
+}
+header h1 {
+    transition: transform 0.3s ease;
+}
+header h1:hover {
+    transform: scale(1.1);
+}
 nav ul {
     display: flex;
-    gap: 130px;
+    gap: 140px;
     list-style: none;
     background-color: lemonchiffon;
 }
@@ -18,18 +30,31 @@ nav ul {
     justify-self: right;
     padding: 10px;
     border: 2px;
-    border-color: antiquewhite;
+    border-color: rgb(184, 255, 197);
     border-style:solid;
     width: 250px;
     height: 90px;
 }
-.row {
-    display: flex;
+div button {
+    bottom: 30px;
 }
-.row button {
-    padding: 10px 15px;
+.container {        /* category box size */
+    width: 100px;
 }
-
+.category ul {      /* category style delete, margin 0 */
+    list-style: none;
+    padding: 0;
+    margin: 0px;
+}
+.category li {
+    font-size: 30px;
+    padding: 20px;
+    cursor: pointer;
+}
+.category li:hover {
+    color: darkslategrey;
+    font-weight: bold;
+}
 
 main {
     align-items:first baseline;
