@@ -1,65 +1,160 @@
 
-* {
-    box-sizing: border-box;
-}
-a {
-    color: black;           /* all a tag underbar delete */
-    text-decoration: inherit;   /* follow orignal deco */
-}
-header {
-    justify-self: center;
-    text-align: center;
-}
-header a{
-    
-}
-header h1 {
-    transition: transform 0.3s ease;
-}
-header h1:hover {
-    transform: scale(1.1);
-}
-nav ul {
-    display: flex;
-    gap: 140px;
-    list-style: none;
-    background-color: lemonchiffon;
+/* =========================
+    전체 기본 설정
+========================= */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f6f2; /* 아이보리톤 */
 }
 
-.login-box {
-    justify-self: right;
-    padding: 10px;
-    border: 2px;
-    border-color: rgb(184, 255, 197);
-    border-style:solid;
-    width: 250px;
-    height: 90px;
-}
-div button {
-    bottom: 30px;
-}
-.container {        /* category box size */
-    width: 100px;
-}
-.category ul {      /* category style delete, margin 0 */
-    list-style: none;
-    padding: 0;
-    margin: 0px;
-}
-.category li {
-    font-size: 30px;
+/* ================ 로고 영역================ */
+.header {
+    text-align: center; /* 가운데 정렬 */
     padding: 20px;
+    position: relative; /* 로그인 버튼 위치 기준 */
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s; 
+}
+
+/* 로고 hover 효과 */
+.logo:hover {
+    transform: scale(1.15);
+}
+
+/* 로그인 버튼 (오른쪽 상단) */
+.login-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    padding: 8px 15px;
+    border: none;
+    background-color: black;
+    color: white;
     cursor: pointer;
 }
-.category li:hover {
-    color: darkslategrey;
-    font-weight: bold;
+
+/* ============= 메뉴바============= */
+ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    text-align: center;
+    gap: 100px;
+    padding: 10px 0;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+}
+ul li {
+    display: flex;
+    padding: 0 10px;
+}
+ul li a {
+    text-decoration: none;
+    color: black;
 }
 
-main {
-    align-items:first baseline;
-
-
+ul li a {
+    cursor: pointer;
+    transition: 0.3s;
 }
 
+/* 메뉴 hover 효과 */
+ul li a:hover {
+    transform: scale(1.15);
+    color: darkblue;
+}
 
+/* ========== =전체 레이아웃 ===== */
+.container {
+    display: flex;
+    padding: 20px;
+}
+
+/* =============== 좌측 카테고리============= */
+.sidebar {
+    width: 200px;
+}
+
+.category-item {
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* 카테고리 hover 효과 */
+.category-item:hover {
+    transform: scale(1.1);
+    color: darkblue;
+}
+
+/* ============ 중앙 상품 영역============= */
+.main {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3열 */
+    gap: 20px;
+}
+
+/* 상품 카드 */
+.product-card {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.wishlist-btn {
+    margin-top: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+/* =========================
+    우측 로그인 박스
+========================= */
+.login-box {
+    width: 250px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+.login-box input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 7px;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+/* =========================
+    footer
+========================= */
+footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    background-color: white;
+}
