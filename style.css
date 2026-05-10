@@ -5,9 +5,13 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f8f6f2; /* 아이보리톤 */
+    background-color: white; /* white톤 */
 }
-
+/*   하이퍼 링크 색깔 파란색X 검은색으로 통일 시키기   */
+ul a, .logo, .category-item a, .product-card a {
+    color: #000;
+    text-decoration: none;
+}
 /* ================ 로고 영역================ */
 .header {
     text-align: center; /* 가운데 정렬 */
@@ -16,12 +20,13 @@ body {
 }
 
 .logo {
+    display: inline-block;
     font-size: 28px;
     font-weight: bold;
+    height: 40px;
     cursor: pointer;
-    transition: 0.3s; 
+    transition: transform 0.3s ease; 
 }
-
 /* 로고 hover 효과 */
 .logo:hover {
     transform: scale(1.15);
@@ -29,16 +34,37 @@ body {
 
 /* 로그인 버튼 (오른쪽 상단) */
 .login-btn {
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+    border: 2px solid #000;
+    z-index: 1;
     position: absolute;
     right: 20px;
     top: 20px;
     padding: 8px 15px;
-    border: none;
-    background-color: black;
-    color: white;
     cursor: pointer;
+    background: #000;
 }
-
+/*   로그인 버튼 효과 after, hover, active   */
+.login-btn:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top:0;
+    right: 0;
+    z-index: -1;
+    background: #e0e5ec;
+    transition: all 0.3s ease;
+}
+.login-btn:hover {
+    color: #000;
+}
+.login-btn:hover:after {
+    left: 0;
+    width: 100%;
+}
 /* ============= 메뉴바============= */
 ul {
     display: flex;
@@ -83,6 +109,7 @@ ul li a:hover {
 
 .category-item {
     margin: 10px 0;
+    padding-top: 30px;
     cursor: pointer;
     transition: 0.3s;
 }
