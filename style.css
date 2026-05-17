@@ -83,9 +83,6 @@ ul li {
 ul li a {
     text-decoration: none;
     color: black;
-}
-
-ul li a {
     cursor: pointer;
     transition: 0.3s;
 }
@@ -174,6 +171,7 @@ ul li a:hover {
     background-color: black;
     color: white;
     border: none;
+    cursor: pointer;
 }
 /* ===== TOP버튼 ===== */
 #topbtn {
@@ -201,44 +199,6 @@ footer {
     background-color: white;
 }
 
-/* ==== 모바일 버전 크기 맞춰서 바뀌게 @media ==== */
-@media screen and (max-width: 768px) {
-
-    /* 메뉴바 간격 줄이기 */
-    ul {
-        gap: 15px;
-        flex-wrap: wrap;   /* 메뉴 항목 줄바꿈 허용 */
-        font-size: 13px;
-    }
-
-    /* 전체 레이아웃: 가로 → 세로로 쌓기 */
-    .container {
-        flex-direction: column;
-    }
-
-    /* 사이드바 너비 해제 */
-    .sidebar {
-        width: 100%;
-    }
-
-    /* 상품 그리드: 3열 → 2열 */
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    /* 로그인 박스 너비 꽉 채우기 */
-    .login-box {
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    /* TOP 버튼 위치 조정 */
-    #topbtn {
-        bottom: 15px;
-        right: 15px;
-    }
-}
-
 /* hamburgerbtn 모바일에서만 보이게, pc(기본)은 안 보임 */
 .hamburger {
     display: none;  /* pc에서 안 보이게 */
@@ -263,7 +223,7 @@ footer {
 }
 /* 사이드바 닫는 X 버튼 */
 .closebtn {
-    display: block;
+    display: none;
     margin-left: auto;  
     background: black;
     color: white;
@@ -280,7 +240,7 @@ footer {
     position: fixed;    
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 4);   /* 투명도 40%에 검은색! */
+    background: rgba(0, 0, 0, 0.4);   /* 투명도 40%에 검은색! */
     z-index: 98;    /* 사이드바(99)보다는 밑, 다른 애들보단 위 */
 }
 /* overlay에는 active클래스가 원래 없음!! 
@@ -290,8 +250,69 @@ footer {
     display: block;
 }
 
-/* hamburger 모바일에서만 나오게 하기 */
+/* 모바일에서 사이드바 로그인 영역 감싸는 박스 */
+.sidebar-login {
+    display: none;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    }
+.sidebar-loginbtn {
+    display: none;
+    width: 70%;
+    margin: 0 auto;
+    padding: 8px 0;
+    text-align: center;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #000;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.sidebar-loginbtn:hover {
+    background: #e0e5ec;
+    color: #000;
+}
+/* 모바일 사이드바-메뉴 전체 영역 */
+.sidebar-hide {
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+/* 모바일 사이드바-메뉴 항목 하나하나 */
+.sidebar-hide-menu {
+    margin: 10px 0;
+    padding-top: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+/* 사이드바 메뉴 링크 밑줄 지우고 검은색 덮기 */
+.sidebar-hide-menu a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+.sidebar-hide-menu:hover {
+    transform: scale(1.1);
+    color: darkblue;
+}
+/* PC에서는 사이드바-메뉴 숨기기 */
+.sidebar-hide {
+    display: none;
+}
+/* === 모바일에서만 나오게 하기 @media screen === */
 @media screen and (max-width: 768px) {
+    /* 모바일에서 사이드바 닫는 X 버튼  */
+    .closebtn {
+        display: block; /* 기본은 안 보임. 모바일에서 표시 */
+    }
+    /* mobile에서는 메뉴바 HOME, PRODUCT빼고 숨김 */
+    .hide-mobile {
+        display: none;
+    }
     .hamburger {
         display: flex;
     }
@@ -330,5 +351,42 @@ footer {
     .login-box {
         width: 100%;
         box-sizing: border-box;
+    }
+    .sidebar-hide{
+        display: block;
+    }
+    /* 메뉴바 간격 줄이기 */
+    ul {
+        gap: 15px;
+        flex-wrap: wrap;   /* 메뉴 항목 줄바꿈 허용 */
+        font-size: 13px;
+    }
+
+    /* 전체 레이아웃: 가로 → 세로로 쌓기 */
+    .container {
+        flex-direction: column;
+    }
+
+    /* 상품 그리드: 3열 → 2열 */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* 로그인 박스 너비 꽉 채우기 */
+    .login-box {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* TOP 버튼 위치 조정 */
+    #topbtn {
+        bottom: 15px;
+        right: 15px;
+    }
+    .sidebar-loginbtn {
+        display: block;
+    }
+    .sidebar-loginbtn {
+        display: block;
     }
 }
