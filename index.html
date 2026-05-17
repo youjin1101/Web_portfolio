@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
+<!-- ==============
+자 일단 개좆됨. 로그인 기능을 index.html에서 시도해봤더니 로그인 후의 상황이 실행 안 됨.
+그리고 로그인 박스를 클릭하여 sign in html로 갔더니 로그인 박스는 개좆만해짐. 
 
+
+=========================  -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +22,14 @@
         <a href="sign_in.html" class="login-btn" id="loginbtn">Login</a>
     </div>
 
+    <!--=== 햄버거 버튼(모바일에서 보이게 pc는 ㄴㄴ)==-->
+    <button class="hamburger" id="hamburger" onclick="openSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <!-- 모바일에서 사이드바 열면 배경 어둡게 하기 -->
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
     <!-- ============ 메뉴바 ============== -->
     <ul>
         <li><a href="index.html">HOME</a></li>
@@ -31,6 +44,9 @@
     <div class="container">
         <!-- 좌측 카테고리 -->
         <div class="sidebar">
+            <!-- 모바일에서 사이드바 닫을 때 누를 X버튼-->
+            <button class="closebtn" onclick="closeSidebar()"></button>
+            
             <h3>카테고리</h3>
             <div class="category-item"><a href="all_product.html">모든 상품</a></div>
             <div class="category-item"><a href="uniform.html">유니폼</a></div>
@@ -45,17 +61,17 @@
 
             <div class="product-grid">
                 <!-- 상품 카드 6개 -->
-                <div class="product-card"><img src="tetsubat.jpg"><p>상품명</p><p>₩10,000</p></div>
-                <div class="product-card"><img src="greenbat.jpg"><p>상품명</p><p>₩10,000</p></div>
-                <div class="product-card"><img src="greyglove.jpg"><p>상품명</p><p>₩10,000</p></div>
-                <div class="product-card"><img src="blackglove.jpg"><p>상품명</p><p>₩10,000</p></div>
-                <div class="product-card"><img src="brownglove.jpg"><p>상품명</p><p>₩10,000</p></div>
-                <div class="product-card"><img src="hitoriball.jpg"><p>상품명</p><p>₩10,000</p></div>
+                <div class="product-card"><img src="tetsubat.jpg"><p>상품명</p><p>₩10,000</p><button onclick="addcart( , )">장바구니</button> </div>
+                <div class="product-card"><img src="greenbat.jpg"><p>상품명</p><p>₩10,000</p><button onclick="addcart( , )">장바구니</button> </div>
+                <div class="product-card"><img src="greyglove.jpg"><p>상품명</p><p>₩10,000</p><button onclick="addcart( , )">장바구니</button> </div>
+                <div class="product-card"><img src="blackglove.jpg"><p>상품명</p><p>₩10,000</p><button onclick="addcart( , )">장바구니</button> </div>
+                <div class="product-card"><img src="brownglove.jpg"><p>상품명</p><p>₩10,000</p><button onclick="addcart( , )">장바구니</button> </div>
+                <div class="product-card"><img src="hitoriball.jpg"><p>상품명</p><p>₩10,000</p><button onclick="addcart( , )">장바구니</button> </div>
             </div>
         </div>
 
         <!-- 우측 로그인 박스 -->
-        <div class="login-box" id="login-box">
+        <div class="login-box" id="loginbox">
             <h3>로그인</h3>
             <input type="text" id="username" placeholder="ID">
             <input type="password" id="password" placeholder="Password">
@@ -63,6 +79,7 @@
             <p id="message"></p>
         </div>
     </div>
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="topbtn">TOP</button>
     <footer>
         ©minyoujin
     </footer>

@@ -12,15 +12,19 @@ const loginbtn = document.getElementById("loginbtn");
         <h3>${loginuser}님 환영합니다.</h3>
         <button onclick = "logout()">Logout</button>`
         loginbtn.innerText = "Logout";
-        loginbtn.onclick = ` function() {
-            logout();
-        }
-        `};
-        /* 자바스크립트 로그인 함수 */
+        loginbtn.onclick = function() {logout();}
+        };
+        /* ======= 자바스크립트 로그인 함수 ====== */
     function login() {
-        /* 로그인창에 input으로 입력된 값들 가져오기 */
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
+        /* ID, password null 체크 후 로그인창에
+        input으로 입력된 값들 가져오기 */
+        const usernameNULL = document.getElementById("username");
+        if (!usernameNULL) return;
+        const username = usernameNULL.value
+       const passwordNULL = document.getElementById("password");
+       if (!passwordNULL) return;
+       const password = passwordNULL.value
+        
         /* 로그인 결과 메시지 가져오기 ! */
         const message = document.getElementById("message");
 
@@ -44,3 +48,23 @@ const loginbtn = document.getElementById("loginbtn");
             message.style.color = "red";
         }
     }
+// 모바일의 사이드바 등등 구현!! JS는 클래스 띠부띠부만 함
+// sidebar open.    active 클래스 붙이면 css에서 정의한 .active스타일 적용 됨
+// classList.add = 해당 요소에 클래스를 추가하는 거!
+function openSidebar() {
+    document.getElementById("sidebar").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
+}
+// sidebar close.   active 클래스 삭제시 active스타일도 삭제
+// classList.remove = 해당 요소에서 class를 제거함
+function closeSidebar () {
+    document.getElementById("sidebar").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+}
+
+
+/* = = = = = = = = = 카트 기능 구현 = = = = = = = */
+const product = {
+    name : ""
+}
+
