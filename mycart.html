@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
-<!-- ==============
-자 일단 개좆됨. 로그인 기능을 index.html에서 시도해봤더니 로그인 후의 상황이 실행 안 됨.
-그리고 로그인 박스를 클릭하여 sign in html로 갔더니 로그인 박스는 개좆만해짐. 
-=========================  -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> MY CART</title>
     <link type="text/css" rel="stylesheet" href="style.css">
+    <script>
+        const cart =
+        JSON.parse(
+            localStorage.getItem("cart")
+        )
+        || [];
+    </script>
 </head>
 
 <body>
@@ -61,14 +64,9 @@
                 <div class="sidebar-hide-menu"><a href="qna.html">Q&A</a></div>
             </div>
         </div>
-        <div class="cartcontainer" id="cartcontainer">
+        <div class="main" id="main">
             <h2> MY CART </h2>
-            <div class="cartlist" id="cartlist"></div>
-            
-            <h3 class="totalprice" id="totalprice"> </h3>
-        </div>
-
-
+            <div class="cartlist" id="cartlist"> 장바구니가 비어있습니다. </div>
         </div>
 
         <!-- 우측 로그인 박스 -->
@@ -89,8 +87,8 @@
 </html>
 
     <!-- 기능 구현할 것들
-    1. 장바구니 상품 출력 기능 
-    2. 총 가격 계산되어 보여주는 기능
+    1. 장바구니 상품 출력 기능  ok
+    2. 총 가격 계산되어 보여주는 기능 ok
     3. 장바구니 물건 선택 및 삭제 버튼
     4. 장바구니 물건 수량 변경 버튼
     5. 주문 버튼은 누르면 그냥 주문 완료됐다고 뜨고

@@ -1,6 +1,6 @@
-const loginbox = document.getElementById("loginbox");
+const loginbox = document.getElementById("loginbox");   
 const loginbtn = document.getElementById("loginbtn");
-    /* 자바 스크립트 로그아웃 함수 */
+    /* ==== 자바 스크립트 로그아웃 함수 ==== */
     function logout() {
         localStorage.removeItem("loginuser");
         location.reload();
@@ -21,9 +21,9 @@ const loginbtn = document.getElementById("loginbtn");
         const usernameNULL = document.getElementById("username");
         if (!usernameNULL) return;
         const username = usernameNULL.value
-       const passwordNULL = document.getElementById("password");
-       if (!passwordNULL) return;
-       const password = passwordNULL.value
+        const passwordNULL = document.getElementById("password");
+        if (!passwordNULL) return;
+        const password = passwordNULL.value
         
         /* 로그인 결과 메시지 가져오기 ! */
         const message = document.getElementById("message");
@@ -60,11 +60,91 @@ function openSidebar() {
 function closeSidebar () {
     document.getElementById("sidebar").classList.remove("active");
     document.getElementById("overlay").classList.remove("active");
-}
+};
 
 
 /* = = = = = = = = = 카트 기능 구현 = = = = = = = */
-const product = {
-    name : ""
+let cart =
+JSON.parse(
+    localStorage.getItem("cart")
+) || [];
+/* JSON.stringfy()는 배열/객체-> 문자열로 저장, JSON.parse()는 문자열->배열/객체 저장 */
+/* localStorage는 글자만 저장! 그래서 배열로 바꿔야함  */
+/*  JSON.parse쓰면 [] -> 배열 이렇게 바뀜 */
+
+/*  ==== 장바구니 담기 기능 ==== */
+function addcart (
+    name,
+    price,
+    image
+) {
+    const nowproduct = cart.find(
+    item => item.name === name
+); /* === cart. 안에서 item name 같은 거 있는지 find ===
+            = 는 대입. == 는 비교(True or False로 나옴). 
+            === 는 값과 자료형태 모두 같아야 True 줌  */
+    if(nowproduct) {
+        nowproduct.quantity++;
+    }
+    else {
+        const product = {
+            name,
+            price,
+            image,
+            quantity : 1
+            };
+        cart.push(product);
+};
+
+localStorage.setItem(
+    "cart",
+    JSON.stringify(cart)
+);
 }
+
+const cartlist =
+document.getElementById(
+    "cartlist"
+);
+let total = 0;
+
+for (
+    let i = 0;
+    i < cart.length;
+    i++
+) {
+    total +=
+    cart[i].price * cart[i].quantity;   /* 가격 곱하기 갯수 */
+    cartlist.innerHTML += `
+    <div class = "cart-item">
+        <img
+        src="${cart[i].image}"
+        width="150"></img>
+        <h3> ${cart[i].name}</h3>
+        <p>
+            가격 : ₩${cart[i].price}
+        </p>
+        <p>
+            수량 : ${cart[i].quantity}
+        </p>
+    </div>`;
+    }
+ 
+cartlist.innerHTML +=`
+<hr>
+<h2>
+
+총 금액 : ₩${total}
+</h2>
+`;
+if (cart.length === 0) {
+    cartlist.innerHTML =`
+    <h3> 장바구니가 비어있습니다. </h3>
+    `;
+}
+/*   이제 마이페이지 장바구니 화면 구현하고 장바구니 담은 템 삭제하는 거랑
+   장바구니 버튼 밤티인 거 뜯어고치기 , 장바구니 수량만 증가되게 find()로 구현하기 */
+
+
+
 
