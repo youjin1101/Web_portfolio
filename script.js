@@ -72,15 +72,37 @@ JSON.parse(
 /* localStorage는 글자만 저장! 그래서 배열로 바꿔야함  */
 /*  JSON.parse쓰면 [] -> 배열 이렇게 바뀜 */
 
-/*  ==== 장바구니 담기 기능 ==== */
+/*  ======== addcart 장바구니 담기 기능 ======== */
 function addcart (
     name,
     price,
     image
 ) {
+    const loginuser = localStorage.getItem("loginuser");
+    if(cartlist) {
+        if(!loginuser) {
+            cartlist.innerHTML = `
+            <h2> 로그인 후 이용 가능합니다. </h2>
+            `;
+            return;
+        }
+        cartlist.innerHTML +=`
+        <hr>
+        <h2>
+        총 금액 : ₩${total}
+        </h2>
+        `;
+        if (cart.length === 0) {
+            cartlist.innerHTML =`
+            <h3> 장바구니가 비어있습니다. </h3>
+            `;
+        }
+    }
+    }
+    {
     const nowproduct = cart.find(
-    item => item.name === name
-); /* === cart. 안에서 item name 같은 거 있는지 find ===
+    item => item.name === name); 
+    /* === cart. 안에서 item name 같은 거 있는지 find ===
             = 는 대입. == 는 비교(True or False로 나옴). 
             === 는 값과 자료형태 모두 같아야 True 줌  */
     if(nowproduct) {
@@ -94,7 +116,7 @@ function addcart (
             quantity : 1
             };
         cart.push(product);
-};
+    };
 
 localStorage.setItem(
     "cart",
@@ -106,8 +128,8 @@ const cartlist =
 document.getElementById(
     "cartlist"
 );
-let total = 0;
 
+let total = 0;
 for (
     let i = 0;
     i < cart.length;
@@ -129,19 +151,7 @@ for (
         </p>
     </div>`;
     }
- 
-cartlist.innerHTML +=`
-<hr>
-<h2>
 
-총 금액 : ₩${total}
-</h2>
-`;
-if (cart.length === 0) {
-    cartlist.innerHTML =`
-    <h3> 장바구니가 비어있습니다. </h3>
-    `;
-}
 /*   이제 마이페이지 장바구니 화면 구현하고 장바구니 담은 템 삭제하는 거랑
    장바구니 버튼 밤티인 거 뜯어고치기 , 장바구니 수량만 증가되게 find()로 구현하기 */
 
