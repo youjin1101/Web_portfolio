@@ -144,9 +144,16 @@ ul li a:hover {
 }
 
 .wishlist-btn {
-    margin-top: 5px;
-    padding: 5px;
+    background: #111;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: 0.3s;
+}
+.wishlist-btn:hover {
+    background: #444;
 }
 
 /* =========================
@@ -303,7 +310,7 @@ footer {
 .sidebar-hide {
     display: none;
 }
-/* === 모바일에서만 나오게 하기 @media screen === */
+/* === 모바일 모바일 이거 모바일 모바일 모바일 모바일 모바일 @media screen === */
 @media screen and (max-width: 768px) {
     /* 모바일에서 사이드바 닫는 X 버튼  */
     .closebtn {
@@ -326,7 +333,7 @@ footer {
         z-index: 99;    /* overlay보다 위로 */
         padding: 20px;
         box-sizing: border-box;
-        transform: translateX(-100%);   /* 왼쪽으로 자기 너비만큼 밀어서 숨음 */
+        transform: translateX(-100%);   /* 왼쪽으로 밀어서 숨김 */
         transition: transform 0.3s ease; /* 스무스하게 사이드바 등장 */
     }
     /* sidebar에 active 붙어서 사이드바 열려있는 상태 */
@@ -336,12 +343,6 @@ footer {
     /* 모바일이니까 전체 레이아웃을 가로에서 세로로! */
     .container {
         flex-direction: column;
-    }
-    /* 모바일이니까 메뉴바 간격 줄여주기 */
-    ul {
-        gap: 15px;
-        flex-wrap: wrap;
-        font-size: 12px;
     }
     /* 상품 그리드도 3열에서 2열로 줄이기 */
     .product-grid {
@@ -359,32 +360,13 @@ footer {
     ul {
         gap: 15px;
         flex-wrap: wrap;   /* 메뉴 항목 줄바꿈 허용 */
-        font-size: 13px;
-    }
-
-    /* 전체 레이아웃: 가로 → 세로로 쌓기 */
-    .container {
-        flex-direction: column;
-    }
-
-    /* 상품 그리드: 3열 → 2열 */
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    /* 로그인 박스 너비 꽉 채우기 */
-    .login-box {
-        width: 100%;
-        box-sizing: border-box;
+        font-size: 12px;
     }
 
     /* TOP 버튼 위치 조정 */
     #topbtn {
         bottom: 15px;
         right: 15px;
-    }
-    .sidebar-loginbtn {
-        display: block;
     }
     .sidebar-loginbtn {
         display: block;

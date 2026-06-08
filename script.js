@@ -79,29 +79,12 @@ function addcart (
     image
 ) {
     const loginuser = localStorage.getItem("loginuser");
-    if(cartlist) {
-        if(!loginuser) {
-            cartlist.innerHTML = `
-            <h2> 로그인 후 이용 가능합니다. </h2>
-            `;
-            return;
-        }
-        cartlist.innerHTML +=`
-        <hr>
-        <h2>
-        총 금액 : ₩${total}
-        </h2>
-        `;
-        if (cart.length === 0) {
-            cartlist.innerHTML =`
-            <h3> 장바구니가 비어있습니다. </h3>
-            `;
-        }
+    if(!loginuser) {
+        alert("로그인 후 이용 가능합니다.");
+        return;
     }
-    }
-    {
     const nowproduct = cart.find(
-    item => item.name === name); 
+        item => item.name === name); 
     /* === cart. 안에서 item name 같은 거 있는지 find ===
             = 는 대입. == 는 비교(True or False로 나옴). 
             === 는 값과 자료형태 모두 같아야 True 줌  */
@@ -116,41 +99,74 @@ function addcart (
             quantity : 1
             };
         cart.push(product);
-    };
-
-localStorage.setItem(
-    "cart",
-    JSON.stringify(cart)
-);
+    }
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+    alert(
+        "장바구니에 추가되었습니다!"
+    );
 }
 
 const cartlist =
-document.getElementById(
-    "cartlist"
-);
+document.getElementById("cartlist");
 
-let total = 0;
-for (
-    let i = 0;
-    i < cart.length;
-    i++
-) {
-    total +=
-    cart[i].price * cart[i].quantity;   /* 가격 곱하기 갯수 */
-    cartlist.innerHTML += `
-    <div class = "cart-item">
-        <img
-        src="${cart[i].image}"
-        width="150"></img>
-        <h3> ${cart[i].name}</h3>
-        <p>
-            가격 : ₩${cart[i].price}
-        </p>
-        <p>
-            수량 : ${cart[i].quantity}
-        </p>
-    </div>`;
+if(cartlist) {
+    /*   로그인 안 했을 경우!!   */
+    if(!loginuser) {
+        cartlist.innerHTML =`
+        <h2>
+        로그인 후 이용 가능합니다.
+        </h2>
+        `;
+        return;
     }
+    /* 총액변수 , for 문으로 장바구니 상품 mycart.html에 출력 */
+    let total = 0;
+    if (cart.length === 0) {
+        cartlist.innerHTML =`
+        <h3> 장바구니가 비어있습니다. </h3>
+        `;
+        return
+    }
+    for (
+        let i = 0;
+        i < cart.length;
+        i++
+    ) {
+        total +=
+        cart[i].price * cart[i].quantity;   /* 가격 곱하기 갯수 */
+        // cart 체크박스 선택 삭제 cart 체크박스 선택 삭제 cart 체크박스 선택 삭제
+        cartlist.innerHTML += `
+            <div class = "cart-item">
+            <input type="checkbox" class="deletecheck" value="${i}">
+                <img
+                src="${cart[i].image}"
+                width="150"></img>
+                <h3> ${cart[i].name}</h3>
+                <p>
+                    가격 : ₩${cart[i].price}
+                </p>
+                <p>
+                    수량 : ${cart[i].quantity}
+                </p>
+            </div>`;
+    }
+    // cart delete button , total 금액 출력 //
+    cartlist.innerHTML +=`
+    <button onclick="deleteproduct()"> 선택 삭제 </button>
+    <hr>
+    <h2>
+    총 금액 : ₩${total.toLocaleString}원
+    </h2>
+    `;
+}
+// cart delete 함수 cart delete 함수 cart delete 함수 cart delete 함수
+function deleteproduct() {
+    const checks =
+    document.querySelectorAll(".deletecheck:checked")
+}
 
 /*   이제 마이페이지 장바구니 화면 구현하고 장바구니 담은 템 삭제하는 거랑
    장바구니 버튼 밤티인 거 뜯어고치기 , 장바구니 수량만 증가되게 find()로 구현하기 */
