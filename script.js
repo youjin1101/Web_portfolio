@@ -112,6 +112,8 @@ function addcart (
 const cartlist =
 document.getElementById("cartlist");
 if(cartlist) {
+    const loginuser =
+    localStorage.getItem("loginuser");
     let total = 0;
     /*   로그인 안 했을 경우!!   */
     if(!loginuser) {
