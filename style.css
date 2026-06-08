@@ -310,6 +310,29 @@ footer {
 .sidebar-hide {
     display: none;
 }
+/* cart delete button cart delete button cart delete button */
+.deletebtn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.deletebtn:hover {
+    background-color: #c9302c;
+}
+.carttotal {
+     font-size: 22px;
+     font-weight: bold;
+     text-align: right;
+     margin-top: 20px;
+    color: black;
+}
+
+
 /* === 모바일 모바일 이거 모바일 모바일 모바일 모바일 모바일 @media screen === */
 @media screen and (max-width: 768px) {
     /* 모바일에서 사이드바 닫는 X 버튼  */

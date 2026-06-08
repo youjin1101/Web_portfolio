@@ -111,8 +111,8 @@ function addcart (
 
 const cartlist =
 document.getElementById("cartlist");
-
 if(cartlist) {
+    let total = 0;
     /*   로그인 안 했을 경우!!   */
     if(!loginuser) {
         cartlist.innerHTML =`
@@ -120,52 +120,61 @@ if(cartlist) {
         로그인 후 이용 가능합니다.
         </h2>
         `;
-        return;
     }
-    /* 총액변수 , for 문으로 장바구니 상품 mycart.html에 출력 */
-    let total = 0;
-    if (cart.length === 0) {
-        cartlist.innerHTML =`
-        <h3> 장바구니가 비어있습니다. </h3>
-        `;
-        return
+    else {
+            
+        /* 총액변수 , for 문으로 장바구니 상품 mycart.html에 출력 */
+        if (cart.length === 0) {
+            cartlist.innerHTML =`
+            <h3> 장바구니가 비어있습니다. </h3>
+            `;
+        }
+        else {
+            for (
+                let i = 0;
+                i < cart.length;
+                i++
+            ) {
+                total +=
+                cart[i].price * cart[i].quantity;   /* 가격 곱하기 갯수 */
+                // cart 체크박스 선택 삭제 cart 체크박스 선택 삭제 cart 체크박스 선택 삭제
+                cartlist.innerHTML += `
+                    <div class = "cart-item">
+                        <img
+                        src="${cart[i].image}"
+                        width="150">
+                        <h3> ${cart[i].name}</h3>
+                        <p>
+                            가격 : ₩${cart[i].price}
+                        </p>
+                        <p>
+                            수량 : ${cart[i].quantity}
+                        </p>
+                        <button class="deletebtn" onclick="deleteproduct(${i})">
+                            삭제
+                        </button>
+                    </div>`;
+            }
+        } // cart delete button , total 금액 출력 //
+                cartlist.innerHTML +=`
+                <hr>
+                <h2 class="carttotal">
+                총 금액 : ₩${total.toLocaleString()}원
+                </h2>
+                `;
     }
-    for (
-        let i = 0;
-        i < cart.length;
-        i++
-    ) {
-        total +=
-        cart[i].price * cart[i].quantity;   /* 가격 곱하기 갯수 */
-        // cart 체크박스 선택 삭제 cart 체크박스 선택 삭제 cart 체크박스 선택 삭제
-        cartlist.innerHTML += `
-            <div class = "cart-item">
-            <input type="checkbox" class="deletecheck" value="${i}">
-                <img
-                src="${cart[i].image}"
-                width="150"></img>
-                <h3> ${cart[i].name}</h3>
-                <p>
-                    가격 : ₩${cart[i].price}
-                </p>
-                <p>
-                    수량 : ${cart[i].quantity}
-                </p>
-            </div>`;
-    }
-    // cart delete button , total 금액 출력 //
-    cartlist.innerHTML +=`
-    <button onclick="deleteproduct()"> 선택 삭제 </button>
-    <hr>
-    <h2>
-    총 금액 : ₩${total.toLocaleString}원
-    </h2>
-    `;
 }
 // cart delete 함수 cart delete 함수 cart delete 함수 cart delete 함수
-function deleteproduct() {
-    const checks =
-    document.querySelectorAll(".deletecheck:checked")
+function deleteproduct(index) {
+    cart.splice(
+        index,
+        1
+    );
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+    location.reload();
 }
 
 /*   이제 마이페이지 장바구니 화면 구현하고 장바구니 담은 템 삭제하는 거랑
