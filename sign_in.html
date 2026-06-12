@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko">
-<!-- ==============
-자 일단 개좆됨. 로그인 기능을 index.html에서 시도해봤더니 로그인 후의 상황이 실행 안 됨.
-그리고 로그인 박스를 클릭하여 sign in html로 갔더니 로그인 박스는 개좆만해짐. 
-=========================  -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> SIGN IN </title>
+    <title> 갈매기 야구 마켓</title>
     <link type="text/css" rel="stylesheet" href="style.css">
     <style>
         .container {
@@ -19,7 +15,8 @@
         }
         .main-content {
             flex: 1;
-            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("baseball_field.jpg");
+            background-image:
+            linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("baseball_field.jpg");
             background-size: cover;
             background-position: center;
         }
@@ -31,24 +28,37 @@
             flex-direction: column;
             justify-content: center;
             padding: 60px;
-            background-color: rgb(255, 255, 255);
+            background-color: rgba(255, 255, 255, 0.5);
             border-radius: 7px;
             box-sizing: border-box;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
-
-        .signin-box input,
         .signin-box button {
             padding: 15px;
             font-size: 1.1em;
             border: none;
+            background-color: #8cc7ff;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
         }
         .signin-box input {
+            font-size: 1.1em;
+            padding: 15px;
             margin-bottom: 25px;
+            border: 1px solid #d9d9d9;
+            border-radius: 8px;
+            background-color: #fafafa;
+            box-sizing: border-box;
         }
-        .signin-box button {
-            background-color: #cae7ff;
-            color: #939393;
-            border-radius: 4px;
+        @media screen and (max-width : 768px) {
+            .signin-box {
+                width: 90%;
+                max-width : 350px;
+                padding: 30px;
+                margin : 30px auto;
+            }
         }
     </style>
 </head>
@@ -59,7 +69,7 @@
         <!-- 로고 (가운데 위치) -->
         <a href="index.html" class="logo">갈매기 야구 마켓</a>
         <!-- 오른쪽 상단 로그인 버튼 -->
-        <a href="sign_in.html" class="login-btn" id="loginbtn">Login</a>
+        <a href="sign_in.html" class="login-btn" id="upperloginbtn">Login</a>
     </div>
 
     <!--=== 햄버거 버튼(모바일에서 보이게 pc는 ㄴㄴ)==-->
@@ -75,9 +85,8 @@
         <li><a href="index.html">HOME</a></li>
         <li class="hide-mobile"><a href="introduce.html">ABOUT US</a></li>
         <li><a href="all_product.html">PRODUCT</a></li>
-        <li class="hide-mobile"><a href="">MY CART</a></li>
-        <li class="hide-mobile"><a href="">MY PAGE</a></li>
-        <li class="hide-mobile"><a href="">Q&A</a></li>
+        <li class="hide-mobile"><a href="mycart.html">MY CART</a></li>
+        <li class="hide-mobile"><a href="mypage.html">MY PAGE</a></li>
     </ul>
 
     <!-- =========== 전체 레이아웃 ============ -->
@@ -100,7 +109,6 @@
                 <div class="sidebar-hide-menu"><a href="introduce.html">ABOUT US</a></div>
                 <div class="sidebar-hide-menu"><a href="mycart.html">MY CART</a></div>
                 <div class="sidebar-hide-menu"><a href="mypage.html">MY PAGE</a></div>
-                <div class="sidebar-hide-menu"><a href="qna.html">Q&A</a></div>
             </div>
         </div>
         <div class="main-content">

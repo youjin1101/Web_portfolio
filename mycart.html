@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> MY CART</title>
     <link type="text/css" rel="stylesheet" href="style.css">
-    <script>
-        const cart =
-        JSON.parse(
-            localStorage.getItem("cart")
-        )
-        || [];
-    </script>
 </head>
 <body>
     <!-- ======== 상단 로고 ========== -->
@@ -19,7 +12,7 @@
         <!-- 로고 (가운데 위치) -->
         <a href="index.html" class="logo">갈매기 야구 마켓</a>
         <!-- 오른쪽 상단 로그인 버튼 -->
-        <a href="sign_in.html" class="login-btn" id="loginbtn">Login</a>
+        <a href="sign_in.html" class="login-btn" id="upperloginbtn">Login</a>
     </div>
 
     <!--=== 햄버거 버튼(모바일에서 보이게 pc는 ㄴㄴ)==-->
@@ -37,7 +30,6 @@
         <li><a href="all_product.html">PRODUCT</a></li>
         <li class="hide-mobile"><a href="mycart.html">MY CART</a></li>
         <li class="hide-mobile"><a href="mypage.html">MY PAGE</a></li>
-        <li class="hide-mobile"><a href="qna.html">Q&A</a></li>
     </ul>
 
     <!-- =========== 전체 레이아웃 ============ -->
@@ -62,17 +54,17 @@
                 <div class="sidebar-hide-menu"><a href="mypage.html">MY PAGE</a></div>
                 <div class="sidebar-hide-menu"><a href="qna.html">Q&A</a></div>
             </div>
-        </div>
+        </div> <!-- main main main main -->
             <div class="main" id="main">
             <h2> MY CART </h2>
-            <div class="cartlist" id="cartlist"> 장바구니가 비어있습니다. </div>
+            <p class="cartlist" id="cartlist"> </p>
         </div>
         <!-- 우측 로그인 박스 -->
         <div class="login-box" id="loginbox">
             <h3>로그인</h3>
             <input type="text" id="username" placeholder="ID">
             <input type="password" id="password" placeholder="Password">
-            <button onclick="login()">Login</button>
+            <button id="loginbtn" onclick="login()">Login</button>
             <p id="message"></p>
         </div>
     </div>

@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko">
-<!-- ==============
-자 일단 개좆됨. 로그인 기능을 index.html에서 시도해봤더니 로그인 후의 상황이 실행 안 됨.
-그리고 로그인 박스를 클릭하여 sign in html로 갔더니 로그인 박스는 개좆만해짐. 
-=========================  -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> MY PAGE</title>
+    <title> 갈매기 야구 마켓</title>
     <link type="text/css" rel="stylesheet" href="style.css">
 </head>
 
@@ -17,7 +13,7 @@
         <!-- 로고 (가운데 위치) -->
         <a href="index.html" class="logo">갈매기 야구 마켓</a>
         <!-- 오른쪽 상단 로그인 버튼 -->
-        <a href="sign_in.html" class="login-btn" id="loginbtn">Login</a>
+        <a href="sign_in.html" class="login-btn" id="upperloginbtn">Login</a>
     </div>
 
     <!--=== 햄버거 버튼(모바일에서 보이게 pc는 ㄴㄴ)==-->
@@ -33,9 +29,8 @@
         <li><a href="index.html">HOME</a></li>
         <li class="hide-mobile"><a href="introduce.html">ABOUT US</a></li>
         <li><a href="all_product.html">PRODUCT</a></li>
-        <li class="hide-mobile"><a href="">MY CART</a></li>
-        <li class="hide-mobile"><a href="">MY PAGE</a></li>
-        <li class="hide-mobile"><a href="">Q&A</a></li>
+        <li class="hide-mobile"><a href="mycart.html">MY CART</a></li>
+        <li class="hide-mobile"><a href="mypage.html">MY PAGE</a></li>
     </ul>
 
     <!-- =========== 전체 레이아웃 ============ -->
@@ -58,22 +53,20 @@
                 <div class="sidebar-hide-menu"><a href="introduce.html">ABOUT US</a></div>
                 <div class="sidebar-hide-menu"><a href="mycart.html">MY CART</a></div>
                 <div class="sidebar-hide-menu"><a href="mypage.html">MY PAGE</a></div>
-                <div class="sidebar-hide-menu"><a href="qna.html">Q&A</a></div>
             </div>
         </div>
-        <!-- 가운데 왼쪽 상단은 이름+환영문구 
-        1. 내정보 수정 기능 
-        2. 주문 내역 확인하기 기능
-        3. 포인트 그냥 띄워주는 정도 0포인트
-        4. 쿠폰함
-        -->
+        
+        <div class="mypage-main" id="mypage-main">
+            <h2>>MY PAGE</h2>
+            <div id="myinfo"></div>
+        </div>
 
         <!-- 우측 로그인 박스 -->
         <div class="login-box" id="loginbox">
             <h3>로그인</h3>
             <input type="text" id="username" placeholder="ID">
             <input type="password" id="password" placeholder="Password">
-            <button onclick="login()">Login</button>
+            <button id="loginbtn" onclick="login()">Login</button>
             <p id="message"></p>
         </div>
     </div>
@@ -84,3 +77,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+

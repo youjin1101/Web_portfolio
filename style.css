@@ -17,6 +17,7 @@ ul a, .logo, .category-item a, .product-card a {
     text-align: center; /* 가운데 정렬 */
     padding: 20px;
     position: relative; /* 로그인 버튼 위치 기준 */
+    border-bottom: 1px solid #eee;
 }
 
 .logo {
@@ -73,8 +74,8 @@ ul {
     text-align: center;
     gap: 100px;
     padding: 10px 0;
-    border-top: 1px solid red;
-    border-bottom: 1px solid red;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 ul li {
     display: flex;
@@ -121,6 +122,8 @@ ul li a:hover {
 .main {
     flex: 1;
     padding: 0 20px;
+    background-color: #fafafa;
+    border-radius: 10px;
 }
 
 .product-grid {
@@ -132,14 +135,20 @@ ul li a:hover {
 /* 상품 카드 */
 .product-card {
     background-color: white;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ddd;
     text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: 0.2s;
+}
+.product-card:hover {
+    transform: translateY(-4px);
 }
 
 .product-card img {
     width: 100%;
-    height: 150px;
+    height: 220px;
     object-fit: cover;
 }
 
@@ -148,6 +157,8 @@ ul li a:hover {
     color: white;
     border: none;
     padding: 10px 20px;
+    width: 100%;
+    margin-top: 10px;
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
@@ -180,6 +191,25 @@ ul li a:hover {
     border: none;
     cursor: pointer;
 }
+/* mypage mypage mypage */
+.mypage-main {
+    max-width: 500px;
+    margin: 40px auto;
+    margin-bottom: 20px;
+    color: #222;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.mypagecard  {
+    font-size: 17px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
 /* ===== TOP버튼 ===== */
 #topbtn {
     position: fixed;      /* 화면에 고정 */
@@ -331,7 +361,37 @@ footer {
      margin-top: 20px;
     color: black;
 }
-
+/*   cart 수량 +, - button   */
+.minusplusbtn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.minusplusbtn:hover {
+    background-color: #c9302c;
+}
+.cartfooter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+.orderbtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.orderbtn:hover {
+    background-color : #0056b3;
+}
 
 /* === 모바일 모바일 이거 모바일 모바일 모바일 모바일 모바일 @media screen === */
 @media screen and (max-width: 768px) {
@@ -371,6 +431,9 @@ footer {
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    .product-card img {
+        height: 140px;
+    }
     /* 로그인 박스 너비 최대로 채우기 */
     .login-box {
         width: 100%;
@@ -385,7 +448,6 @@ footer {
         flex-wrap: wrap;   /* 메뉴 항목 줄바꿈 허용 */
         font-size: 12px;
     }
-
     /* TOP 버튼 위치 조정 */
     #topbtn {
         bottom: 15px;
@@ -393,5 +455,9 @@ footer {
     }
     .sidebar-loginbtn {
         display: block;
+    }
+    /*   걍 모바일에서는 얘 없어버리자   */
+    .login-box {
+        display: none;
     }
 }
