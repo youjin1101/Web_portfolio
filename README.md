@@ -67,6 +67,11 @@ all_product.html
 introduce.html
 mypage.html
 mycart.html
+Bat.html
+cheer.html
+Glove.html
+seikatsu.html
+uniform.html
 
 style.css
 script.js
