@@ -10,8 +10,9 @@
             color: white;
             text-align: center;
             font-weight: bold;
+            min-height: 40px;
         }
-        .losebtn {
+        .resultbtn {
             color: #fff;
             text-decoration: none;
             outline: none;
@@ -24,7 +25,7 @@
             background: #000;
             transition: 0.2s;
         }
-        .losebtn:hover {
+        .resultbtn:hover {
             transform: translateY(-4px);
         }
         .btngroup {
@@ -32,22 +33,6 @@
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
-        }
-        .winbtn {
-            color: #fff;
-            background: #000;
-            text-decoration: none;
-            border: 2px solid #000;
-            cursor: pointer;
-            outline: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            transition: 0.2s;
-        }
-        .winbtn:hover {
-            transform: translateY(-4px);
         }
         /* background img background img background img */
         .main {
@@ -68,23 +53,23 @@
         }
     </style>
     <script>
-        function losebtn() {
-            let lose = document.getElementById("wanttowin").innerHTML;
-            let lottegiants = document.getElementById("lotte").innerHTML;
-            if (lose.length !== 4) {
-                return;
+        function changeresult() {
+            const lotte =
+            document.getElementById("lotte");
+            const wanttowin =
+            document.getElementById("wanttowin");
+            const resultbtn =
+            document.getElementById("resultbtn");
+            if(lotte.innerHTML === "Lotte Giants 승리") {
+                lotte.innerHTML ="Lotte Giants";
+                wanttowin.innerHTML ="망해";
+                resultbtn.innerHTML ="롯데 승리 시 클릭";
             }
-            document.getElementById("wanttowin").innerHTML =
-                lose.substring(1,3);
-            
-            document.getElementById("lotte").innerHTML = 
-                lottegiants.substring(0, 11);
-        }
-        function winbtn() {
-            document.getElementById("lotte").innerHTML =
-            "Lotte Giants 가을야구";
-            document.getElementById("wanttowin").innerHTML = 
-            "희망해요";
+            else {
+                lotte.innerHTML ="Lotte Giants 승리";
+                wanttowin.innerHTML ="희망해요";
+                resultbtn.innerHTML ="롯데 패배 시 클릭";
+            }
         }
     </script>
 </head>
@@ -142,11 +127,8 @@
             <h2 class="wanttowin" id="wanttowin">희망해요</h2>
             <br>
             <div class="btngroup">
-                <button onclick="losebtn()" class="losebtn" id="losebtn">
+                <button onclick="changeresult()" class="resultbtn" id="resultbtn">
                     롯데가 패배하면 누르세요.
-                </button>
-                <button onclick="winbtn()" class="winbtn" id="winbtn">
-                    롯데 연패를 끊었다면 누르세요.
                 </button>
             </div>
             <br>
