@@ -434,11 +434,6 @@ footer {
     .product-card img {
         height: 140px;
     }
-    /* 로그인 박스 너비 최대로 채우기 */
-    .login-box {
-        width: 100%;
-        box-sizing: border-box;
-    }
     .sidebar-hide{
         display: block;
     }
